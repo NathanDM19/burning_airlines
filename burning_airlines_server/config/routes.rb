@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get "/flights/json" => "flights#json"
   resources :airplanes
   delete "/airplanes/:id" => "airplanes#destroy"
   resources :flights

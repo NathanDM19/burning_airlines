@@ -19,7 +19,7 @@
 <%= f.text_field :to_airport %>
 <br>
 <%= f.label :airplane_id %>
-<%= f.select :airplane_id, options_for_select(['Select a airplane', -1] +@airplanes.pluck(:name, :id)) %>
+<%= f.select :airplane_id, options_for_select(['Select a airplane'] +@airplanes.pluck(:name, :id)) %>
 <br>
 <%= link_to "Cancel", flights_path %>
 <%= f.submit %>

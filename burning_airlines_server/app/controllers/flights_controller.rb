@@ -1,6 +1,5 @@
 class FlightsController < ApplicationController
   def new
-    @flight = Flight.new
     @airplanes = Airplane.all
     # raise "hell"
   end
@@ -38,6 +37,9 @@ class FlightsController < ApplicationController
     redirect_to flights_path
   end
 
+  def json
+    render json: Flight.all
+  end
   private
   def flight_params
     params.require(:flight).permit(:date, :from_airport, :to_airport, :airplane_id)
