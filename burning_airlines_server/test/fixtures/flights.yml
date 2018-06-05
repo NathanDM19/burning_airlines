@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-06-05 15:20:57
+  from_airport: MyText
+  to_airport: MyText
+  seats: 1
+  airplane_id: 1
+
+two:
+  date: 2018-06-05 15:20:57
+  from_airport: MyText
+  to_airport: MyText
+  seats: 1
+  airplane_id: 1

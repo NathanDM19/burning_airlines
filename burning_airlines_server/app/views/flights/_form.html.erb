@@ -1,0 +1,15 @@
+<%= form_for(@flight) do |f| %>
+<%= f.label :date %>
+<%= f.text_field :date %>
+<br>
+<%= f.label :from_airport %>
+<%= f.text_field :from_airport %>
+<br>
+<%= f.label :to_airport %>
+<%= f.text_field :to_airport %>
+<br>
+
+<br>
+<%= link_to "Cancel", flights_path %>
+<%= f.submit %>
+<% end %>

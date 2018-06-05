@@ -1,0 +1,13 @@
+<%= form_for(@airplane) do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<br>
+<%= f.label :rows %>
+<%= f.text_field :rows %>
+<br>
+<%= f.label :columns %>
+<%= f.text_field :columns %>
+<br>
+<%= link_to "Cancel", airplanes_path %>
+<%= f.submit %>
+<% end %>

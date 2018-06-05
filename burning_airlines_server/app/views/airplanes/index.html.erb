@@ -1,0 +1,11 @@
+<h1>Virgin Airlines</h1>
+<button><%= link_to "Create Plane", new_airplane_path %></button>
+<br>
+<hr>
+<% @airplanes.each do |airplane| %>
+<p>Name: <%=airplane.name %></p>
+<p>Rows: <%=airplane.rows %></p>
+<p>Columns: <%=airplane.columns %></p>
+<%=link_to "Edit this airplane", edit_airplane_path(airplane.id) %>
+<hr>
+<% end %>
