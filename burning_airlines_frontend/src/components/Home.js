@@ -15,14 +15,14 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    const fetchSecrets = () => {
+    const fetchFlights = () => {
       axios.get(SERVER_URL)
         .then(response => {
           this.setState({ flights: response.data })
         });
     };
-    fetchSecrets();
-    setInterval(fetchSecrets, 1000)
+    fetchFlights();
+    setInterval(fetchFlights, 1000)
   }
 
   render() {
@@ -31,13 +31,13 @@ class Home extends Component {
         <h1>All Flights</h1>
         {
           this.state.flights.length && this.state.flights.map(flight =>
-            <div>
-              <p key={flight.id}>{flight.date}</p>
-              <p key={flight.id}>From: {flight.from_airport}</p>
-              <p key={flight.id}>To: {flight.to_airport}</p>
-              <p key={flight.id}>Airplane ID: {flight.airplane_id}</p>
-              <Link to={`/flights/${flight.id}`}>Book your seat</Link>
-              <hr/>
+            <div key={flight.id}>
+              <p>{flight.date}</p>
+              <p>From: {flight.from_airport}</p>
+              <p>To: {flight.to_airport}</p>
+              <p>Airplane ID: {flight.airplane_id}</p>
+              <Link to={`/flights/${flight.id}`} ola="olaaaa">Book your seat</Link>
+              <hr />
             </div>)
          }
       </div>
