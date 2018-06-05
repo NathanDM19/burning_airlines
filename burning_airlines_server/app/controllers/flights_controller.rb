@@ -1,19 +1,16 @@
 class FlightsController < ApplicationController
   def new
     @airplanes = Airplane.all
-    @flight = Flight.new
+    # raise "hell"
   end
 
   def create
-    # a = Flight.new
-    # info = params[:flight]
-    # a.date = info[:date]
-    # a.from_airport = info[:from_airport]
-    # a.to_airport = info[:to_airport]
-    # a.airplane_id = info[:airplane_id].to_i
-    # a.save
-    Flight.create flight_params
-    redirect_to flights_path
+    flight = Flight.create flight_params
+    # raise "hell"
+    if flight.persisted?
+      redirect_to flights_path
+    end
+    flash[:flight_error] = flight.errors.full_messages
   end
 
   def index
@@ -25,11 +22,12 @@ class FlightsController < ApplicationController
 
   def edit
     @flight = Flight.find params[:id]
+    @airplanes = Airplane.all
   end
 
   def update
     flight = Flight.find params[:id]
-    Flight.update flight_params
+    flight.update flight_params
     redirect_to flights_path
   end
 
@@ -39,6 +37,9 @@ class FlightsController < ApplicationController
     redirect_to flights_path
   end
 
+  def json
+    render json: Flight.all
+  end
   private
   def flight_params
     params.require(:flight).permit(:date, :from_airport, :to_airport, :airplane_id)

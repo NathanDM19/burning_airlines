@@ -1,4 +1,12 @@
-<br>
-<button><%= link_to "Add new flight", new_flight_path %></button>
+<h1>Virgin Airlies</h1>
+<button><%= link_to "Create flight", new_flight_path %></button>
 <br>
 <hr>
+<% @flights.each do |flight| %>
+<p>Name: <%=flight.id %></p>
+<p>Date: <%=flight.date %></p>
+<p>Flying from: <%=flight.from_airport %></p>
+<p>Flying to: <%=flight.to_airport %></p>
+<%=link_to "Edit this flight", edit_flight_path(flight.id) %>
+<hr>
+<% end %>

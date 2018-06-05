@@ -1,6 +1,16 @@
-<%= form_for(@flight) do |f| %>
+<% if flash[:flight_error] %>
+<div class="error">
+  <ol>
+  <% flash[:flight_error].each do |e| %>
+    <li><strong><%= e %></strong></li>
+    <% end %>
+  </ol>
+</div>
+<% end %>
+<br>
+<%= form_for @flight do |f| %>
 <%= f.label :date %>
-<%= f.text_field :date %>
+<%= f.date_select :date %>
 <br>
 <%= f.label :from_airport %>
 <%= f.text_field :from_airport %>
@@ -9,10 +19,7 @@
 <%= f.text_field :to_airport %>
 <br>
 <%= f.label :airplane_id %>
- <%= f.select :airplane_id,
-      options_for_select(['Select a airplane'] +@airplanes.pluck(:name, :id))
-  %>
-
+<%= f.select :airplane_id, options_for_select(['Select a airplane'] +@airplanes.pluck(:name, :id)) %>
 <br>
 <%= link_to "Cancel", flights_path %>
 <%= f.submit %>
