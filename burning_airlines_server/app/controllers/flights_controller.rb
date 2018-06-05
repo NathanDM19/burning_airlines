@@ -2,14 +2,16 @@ class FlightsController < ApplicationController
   def new
     @flight = Flight.new
     @airplanes = Airplane.all
+    # raise "hell"
   end
 
   def create
-    puts "hello"
     flight = Flight.create flight_params
+    # raise "hell"
+    if flight.persisted?
+      redirect_to flights_path
+    end
     flash[:flight_error] = flight.errors.full_messages
-    
-    redirect_to flights_path
   end
 
   def index
@@ -21,11 +23,12 @@ class FlightsController < ApplicationController
 
   def edit
     @flight = Flight.find params[:id]
+    @airplanes = Airplane.all
   end
 
   def update
     flight = Flight.find params[:id]
-    Flight.update flight_params
+    flight.update flight_params
     redirect_to flights_path
   end
 
@@ -37,6 +40,6 @@ class FlightsController < ApplicationController
 
   private
   def flight_params
-    params.require(:flight).permit(:date, :from_airport, :to_airport)
+    params.require(:flight).permit(:date, :from_airport, :to_airport, :airplane_id)
   end
 end

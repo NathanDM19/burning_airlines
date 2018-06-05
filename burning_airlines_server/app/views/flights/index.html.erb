@@ -1,3 +1,12 @@
-<h1>Flights#index</h1>
-<p>Find me in app/views/flights/index.html.erb</p>
-<%= flash[:flight_errors] %>
+<h1>Virgin Airlies</h1>
+<button><%= link_to "Create flight", new_flight_path %></button>
+<br>
+<hr>
+<% @flights.each do |flight| %>
+<p>Name: <%=flight.id %></p>
+<p>Date: <%=flight.date %></p>
+<p>Flying from: <%=flight.from_airport %></p>
+<p>Flying to: <%=flight.to_airport %></p>
+<%=link_to "Edit this flight", edit_flight_path(flight.id) %>
+<hr>
+<% end %>
