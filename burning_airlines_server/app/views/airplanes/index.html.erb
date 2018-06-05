@@ -3,7 +3,7 @@
 <br>
 <hr>
 <% @airplanes.each do |airplane| %>
-<p>Name: <%=airplane.name %></p>
+<p>Name: <%=link_to airplane.name, airplane_path(airplane) %></p>
 <p>Rows: <%=airplane.rows %></p>
 <p>Columns: <%=airplane.columns %></p>
 <%=link_to "Edit this airplane", edit_airplane_path(airplane.id) %>

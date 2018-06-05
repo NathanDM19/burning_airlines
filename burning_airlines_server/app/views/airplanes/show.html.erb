@@ -1,2 +1,18 @@
-<h1>Airplanes#show</h1>
-<p>Find me in app/views/airplanes/show.html.erb</p>
+<h1>Airplane: <%= @airplane.name %></h1>
+
+<p>Row(s): <%= @airplane.rows %></p>
+<p>Column(s): <%= @airplane.columns %></p>
+<br>
+<div class="grid-container">
+  <div class="grid-item">1</div>
+  <div class="grid-item">2</div>
+  <div class="grid-item">3</div>
+  <div class="grid-item">4</div>
+  <div class="grid-item">5</div>
+  <div class="grid-item">6</div>
+  <div class="grid-item">7</div>
+  <div class="grid-item">8</div>
+  <div class="grid-item">9</div>
+</div>
+<hr>
+<%= link_to "Back to index page", airplanes_path %>
