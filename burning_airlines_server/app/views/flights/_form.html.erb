@@ -8,6 +8,10 @@
 <%= f.label :to_airport %>
 <%= f.text_field :to_airport %>
 <br>
+<%= f.label :airplane_id %>
+ <%= f.select :airplane_id,
+      options_for_select(['Select a airplane'] +@airplanes.pluck(:name, :id))
+  %>
 
 <br>
 <%= link_to "Cancel", flights_path %>

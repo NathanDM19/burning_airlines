@@ -1,14 +1,18 @@
 class FlightsController < ApplicationController
   def new
-    @flight = Flight.new
     @airplanes = Airplane.all
+    @flight = Flight.new
   end
 
   def create
-    puts "hello"
-    flight = Flight.create flight_params
-    flash[:flight_error] = flight.errors.full_messages
-    
+    # a = Flight.new
+    # info = params[:flight]
+    # a.date = info[:date]
+    # a.from_airport = info[:from_airport]
+    # a.to_airport = info[:to_airport]
+    # a.airplane_id = info[:airplane_id].to_i
+    # a.save
+    Flight.create flight_params
     redirect_to flights_path
   end
 
@@ -37,6 +41,6 @@ class FlightsController < ApplicationController
 
   private
   def flight_params
-    params.require(:flight).permit(:date, :from_airport, :to_airport)
+    params.require(:flight).permit(:date, :from_airport, :to_airport, :airplane_id)
   end
 end

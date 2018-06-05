@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2018_06_05_053510) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "airplanes", force: :cascade do |t|
+    t.text "name"
+    t.integer "rows"
+    t.integer "colums"
+    t.integer "flight_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+  
   create_table "flights", force: :cascade do |t|
     t.datetime "date"
     t.text "from_airport"
