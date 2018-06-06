@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Row, Col, Button } from 'reactstrap'
 
-const SERVER_URL = "http://localhost:3000/flights/json.json"
+const SERVER_URL = "http://localhost:3000/flights/json"
 
 
 class Flight extends Component {
@@ -13,9 +13,11 @@ class Flight extends Component {
       flight: {},
       rows: [],
       columns: [],
-      reservations: [],
-      letters: ["", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
-      seats: [[]]
+      letters: ["", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
+      seats: [[]],
+      bookRow: 0,
+      bookColumn: 0,
+      user_id: 30
     }
     // console.log(this.props.match.params.id)
     // console.log(this.props.match.params.id)
@@ -37,7 +39,7 @@ class Flight extends Component {
           let tempSeats = [];
           for (let i = 0; i < this.state.flight.airplane.rows; i++) {
             tempRow[i] = i + 1;
-            tempSeats[i] = []
+            tempSeats[i] = [];
             for (let j = 0; j < this.state.flight.airplane.columns; j++) {
               for (let k = 0; k < this.state.flight.reservations.length; k++) {
                 if (this.state.flight.reservations[k].row === i+1 && this.state.flight.reservations[k].column === j+1) {
@@ -65,15 +67,18 @@ class Flight extends Component {
           setInterval(fetchFlights, 1000)
   }
 
-  bookSeat() {
-    console.log("Clicked")
+  bookSeat(row, column) {
+    console.log(row, column, this.state.user_id, this.state.flight.id)
+      axios.post(SERVER_URL, { row: row, column: column, user_id: this.state.user_id, flight_id: this.state.flight.id})
   }
 
   render() {
     return (
       <div>
+        <h1>Flight {this.state.flight.id}</h1>
+          <p>Date: {this.state.flight.date[11] + this.state.flight.date[12] + ":" + this.state.flight.date[14] + this.state.flight.date[15] + " " + "AEST"}<br />{this.state.flight.date[8] + this.state.flight.date[9] + "/" + this.state.flight.date[5] + this.state.flight.date[6] + "/" + this.state.flight.date[0] + this.state.flight.date[1] + this.state.flight.date[2] + this.state.flight.date[3]}</p>
         <Container className="seatsContainer">
-          <Row>
+          <Row className="seatRow">
             <Col sm="1">
             </Col>  
             {this.state.rows.map(row => 
@@ -83,16 +88,16 @@ class Flight extends Component {
             )}
             </Row>
           {this.state.columns.map(column => 
-          <Row>  
+          <Row className="seatRow">  
             <Col className="seatNumbers" sm="1">
               {column}
             </Col> 
-            {this.state.rows.map(row => 
-                this.state.seats[row - 1][column - 1] ? <Col className="seatTaken" sm="1">{this.state.seats[row - 1][column - 1]}</Col> : <Col onClick={this.bookSeat} className="seatFree" sm="1"><Button>Free</Button></Col>
+              {this.state.rows.map(row =>
+                this.state.seats[row - 1][column - 1] ? <Col className="seatTaken" sm="1">{this.state.seats[row - 1][column - 1]}</Col> : <Col className="seatFree" sm="1"><Button onClick={() => this.bookSeat(row, column)}>Free</Button></Col>
             )}
             </Row>  
           )}    
-        </Container>
+          </Container>  
       </div>  
     )
   }

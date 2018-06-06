@@ -39,7 +39,8 @@ body {
   text-decoration: none;
 }
 .seatsContainer {
-  margin-top: 100px;
+  margin-left: 100px;
+  padding-left: 100px;
 }
 .seatTaken, .seatFree {
   border: 1px solid black;
