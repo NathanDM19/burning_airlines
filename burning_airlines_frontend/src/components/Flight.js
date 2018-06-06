@@ -76,7 +76,6 @@ class Flight extends Component {
     return (
       <div>
         <h1>Flight {this.state.flight.id}</h1>
-          <p>Date: {this.state.flight.date[11] + this.state.flight.date[12] + ":" + this.state.flight.date[14] + this.state.flight.date[15] + " " + "AEST"}<br />{this.state.flight.date[8] + this.state.flight.date[9] + "/" + this.state.flight.date[5] + this.state.flight.date[6] + "/" + this.state.flight.date[0] + this.state.flight.date[1] + this.state.flight.date[2] + this.state.flight.date[3]}</p>
         <Container className="seatsContainer">
           <Row className="seatRow">
             <Col sm="1">
