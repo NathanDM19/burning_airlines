@@ -1,2 +1,39 @@
-<h1>Flights#show</h1>
-<p>Find me in app/views/flights/show.html.erb</p>
+<h1>Flight: <%= @flight.id %></h1>
+<!-- <%= @flight.airplane.columns %> -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+    <% @rows.map do |row| %>
+    <div class="col">
+      <%= @list[row]%>
+    </div>
+    <% end %>
+  </div>
+  <% @columns.map do |row| %>
+    <div class="row">
+      <div class="col">
+        <% row%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" id="colNumber">
+        <%= row %>
+      </div>
+        <% @rows.map do |column| %>
+        <div class="col flightBorder">
+          <!-- <% column%> -->
+          <% @flight.reservations.each do |reservation| %>
+            <% if reservation.column === column && reservation.row === row%>
+              <%= reservation.user.name %>
+            <% else %>
+              <% column %>
+            <% end %>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+  <% end %>
+</div>

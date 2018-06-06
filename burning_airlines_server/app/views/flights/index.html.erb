@@ -5,25 +5,25 @@
 
 <div class="container">
   <div class="row">
-    <div class="col" id="titleContainer">
+    <div class="col col-1" id="titleContainer">
       Date
     </div>
-    <div class="col">
+    <div class="col col-1">
       Flight
     </div>
-    <div class="col">
+    <div class="col col-1">
       Departure
     </div>
-    <div class="col">
+    <div class="col col-1">
       Destiniation
     </div>
-    <div class="col">
+    <div class="col col-1">
       Plane
     </div>
-    <div class="col">
+    <div class="col col-1">
       Seats
     </div>
-    <div class="col">
+    <div class="col col-1">
       <%= link_to "Create flight", new_flight_path %>
     </div>
   </div>
@@ -37,7 +37,7 @@
         <p><%= date.strftime("%H:%M %Z %d/%m/%Y") %></p>
       </div>
       <div class="col">
-        <p><%=flight.id %></p>
+        <p><%=link_to flight.id, flight_path(flight.id)%></p>
       </div>
       <div class="col">
         <p><%=flight.from_airport %></p>
