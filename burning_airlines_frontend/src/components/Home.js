@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
+
 
 const SERVER_URL = "http://localhost:3000/flights/json.json"
 
@@ -32,6 +34,7 @@ class Home extends Component {
         {
           this.state.flights.length && this.state.flights.map(flight =>
             <div key={flight.id}>
+              <Button>Hello</Button>
               <p>{flight.date}</p>
               <p>From: {flight.from_airport}</p>
               <p>To: {flight.to_airport}</p>
