@@ -1,12 +1,62 @@
 <h1>Virgin Airlies</h1>
-<button><%= link_to "Create flight", new_flight_path %></button>
+<!-- <button><%= link_to "Create flight", new_flight_path %></button> -->
 <br>
-<hr>
-<% @flights.each do |flight| %>
-<p>Name: <%=flight.id %></p>
-<p>Date: <%=flight.date %></p>
-<p>Flying from: <%=flight.from_airport %></p>
-<p>Flying to: <%=flight.to_airport %></p>
-<%=link_to "Edit this flight", edit_flight_path(flight.id) %>
-<hr>
-<% end %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col" id="titleContainer">
+      Date
+    </div>
+    <div class="col">
+      Flight
+    </div>
+    <div class="col">
+      Departure
+    </div>
+    <div class="col">
+      Destiniation
+    </div>
+    <div class="col">
+      Plane
+    </div>
+    <div class="col">
+      Seats
+    </div>
+    <div class="col">
+      <%= link_to "Create flight", new_flight_path %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <% @flights.each do |flight| %>
+  <div class="row">
+      <div class="col">
+        <%date = flight.date.in_time_zone("Sydney") %>
+        <p><%= date.strftime("%H:%M %Z %d/%m/%Y") %></p>
+      </div>
+      <div class="col">
+        <p><%=flight.id %></p>
+      </div>
+      <div class="col">
+        <p><%=flight.from_airport %></p>
+      </div>
+      <div class="col">
+        <p><%=flight.to_airport %></p>
+      </div>
+      <div class="col">
+        <p><%=flight.airplane.name %></p>
+      </div>
+      <div class="col">
+        <p><%=flight.airplane.rows * flight.airplane.columns %></p>
+      </div>
+      <div class="col">
+        <p><%=link_to "Edit this flight", edit_flight_path(flight.id) %></p>
+      </div>
+  </div>
+  <!-- <div class="row">
+    <%=link_to "Edit this flight", edit_flight_path(flight.id) %>
+  </div> -->
+  <% end %>
+</div>
