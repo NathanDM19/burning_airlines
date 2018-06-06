@@ -38,3 +38,23 @@ body {
   color: white;
   text-decoration: none;
 }
+.seatsContainer {
+  margin-top: 100px;
+}
+.seatTaken, .seatFree {
+  border: 1px solid black;
+  width: 10px;
+  height: 50px;
+  text-align: center;
+  padding-top: 5px;
+}
+.seatTaken {
+  padding-top: 12px;
+}
+
+.seatNumbers {
+  text-align: right;
+}
+.lettersRow {
+  text-align: center;
+}

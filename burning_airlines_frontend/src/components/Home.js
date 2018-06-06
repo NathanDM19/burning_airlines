@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Button } from 'reactstrap'
 
 
@@ -48,7 +47,7 @@ class Home extends Component {
               Destiniation
            </Col>
             <Col>
-              Plane
+              Airplane
             </Col>
             <Col>
               Seats
@@ -63,8 +62,6 @@ class Home extends Component {
           this.state.flights.length && this.state.flights.map(flight =>
               <Row key={flight.id}>
                 <Col>
-                {/* {new Intl.DateTimeFormat('en-US').format(Date.UTC(flight.date))}   */}
-                {/* {flight.date} <br/>   */}
                   {flight.date[11] + flight.date[12] + ":" + flight.date[14] + flight.date[15] + " " + "AEST"}<br />{flight.date[8] + flight.date[9] + "/" + flight.date[5] + flight.date[6] + "/" + flight.date[0] + flight.date[1] + flight.date[2] + flight.date[3]}
                 </Col>  
                 <Col>
@@ -85,8 +82,8 @@ class Home extends Component {
                 <Col>
                   <Button><Link to={`flights/${flight.id}`} className="bookButton">Book a seat</Link></Button>  
                 </Col>  
-            </Row>)
-          }
+            </Row>
+          )}
          </Container> 
       </div>
     )
