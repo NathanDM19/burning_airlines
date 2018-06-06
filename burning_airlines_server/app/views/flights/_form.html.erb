@@ -13,7 +13,7 @@
   <%= form_for @flight do |f| %>
   <%= f.label :date %>
   <br>
-  <%= f.date_select :date, class: "form-control" %>
+  <%= f.datetime_select :date, class: "form-control" %>
   <br><br>
   <%= f.label :from_airport %>
   <%= f.text_field :from_airport, class: "form-control" %>

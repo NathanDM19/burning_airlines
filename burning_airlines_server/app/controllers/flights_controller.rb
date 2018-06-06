@@ -39,7 +39,7 @@ class FlightsController < ApplicationController
   end
 
   def json
-    render json: Flight.all
+    render json: Flight.all, include: [:airplane , {reservations: {include: [:user]} } ]
   end
   private
   def flight_params
