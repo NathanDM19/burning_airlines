@@ -4,26 +4,26 @@
 
 
 <div class="container">
-  <div class="row">
-    <div class="col flightIndex" id="titleContainer">
+  <div class="row test">
+    <div class="col" id="titleContainer">
       Date
     </div>
-    <div class="col flightIndex">
+    <div class="col">
       Flight
     </div>
-    <div class="col flightIndex">
+    <div class="col">
       Departure
     </div>
-    <div class="col flightIndex">
+    <div class="col">
       Destiniation
     </div>
-    <div class="col flightIndex">
+    <div class="col">
       Plane
     </div>
-    <div class="col flightIndex">
+    <div class="col">
       Seats
     </div>
-    <div class="col flightIndex">
+    <div class="col">
       <%= link_to "Create flight", new_flight_path %>
     </div>
   </div>
@@ -31,8 +31,8 @@
 
 <div class="container">
   <% @flights.each do |flight| %>
-  <div class="row">
-      <div class="col flightIndex">
+  <div class="row test">
+      <div class="col">
         <%date = flight.date.in_time_zone("Sydney") %>
         <p><%= date.strftime("%H:%M %Z %d/%m/%Y") %></p>
       </div>

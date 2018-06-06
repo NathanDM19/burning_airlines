@@ -1,5 +1,4 @@
 class FlightsController < ApplicationController
-
   skip_before_action :verify_authenticity_token
   def new
     @airplanes = Airplane.all
@@ -55,6 +54,9 @@ class FlightsController < ApplicationController
 
   def json
     render json: Flight.all, include: [:airplane , {reservations: {include: [:user]} } ]
+  end
+  def post
+    reservation = Reservation.create row: params['row'], column: params['column'], user_id: params['user_id'], flight_id: params['flight_id']
   end
   private
   def flight_params
