@@ -8,19 +8,24 @@
 </div>
 <% end %>
 <br>
-<%= form_for @flight do |f| %>
-<%= f.label :date %>
-<%= f.date_select :date %>
-<br>
-<%= f.label :from_airport %>
-<%= f.text_field :from_airport %>
-<br>
-<%= f.label :to_airport %>
-<%= f.text_field :to_airport %>
-<br>
-<%= f.label :airplane_id %>
-<%= f.select :airplane_id, options_for_select(['Select a airplane'] +@airplanes.pluck(:name, :id)) %>
-<br>
-<%= link_to "Cancel", flights_path %>
-<%= f.submit %>
-<% end %>
+
+<div class="form-group">
+  <%= form_for @flight do |f| %>
+  <%= f.label :date %>
+  <br>
+  <%= f.date_select :date, class: "form-control" %>
+  <br><br>
+  <%= f.label :from_airport %>
+  <%= f.text_field :from_airport, class: "form-control" %>
+  <br>
+  <%= f.label :to_airport %>
+  <%= f.text_field :to_airport, class: "form-control" %>
+  <br>
+  <%= f.label :airplane_id %>
+  <br>
+  <%= f.select :airplane_id, options_for_select(['Select a airplane:'] +@airplanes.pluck(:name, :id)), class: "form-control col-xs-6"%>
+  <br><br>
+  <%= f.submit class:"btn btn-primary"%>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <%= link_to "Cancel", flights_path, class:"btn btn-primary"%>
+  <% end %>
+</div>

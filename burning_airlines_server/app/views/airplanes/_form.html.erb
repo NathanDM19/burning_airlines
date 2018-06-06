@@ -1,13 +1,15 @@
 <%= form_for(@airplane) do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<br>
-<%= f.label :rows %>
-<%= f.text_field :rows %>
-<br>
-<%= f.label :columns %>
-<%= f.text_field :columns %>
-<br>
-<%= link_to "Cancel", airplanes_path %>
-<%= f.submit %>
-<% end %>
+<div class="form-group">
+  <%= f.label :name%>
+  <%= f.text_field :name, class: "form-control" %>
+  <br>
+  <%= f.label :rows%>
+  <%= f.text_field :rows, class: "form-control" %>
+  <br>
+  <%= f.label :columns%>
+  <%= f.text_field :columns, class: "form-control" %>
+  <br>
+  <%= f.submit class:"btn btn-primary"%>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  <%= link_to "Cancel", airplanes_path, class:"btn btn-primary"%>
+  <% end %>
+</div>

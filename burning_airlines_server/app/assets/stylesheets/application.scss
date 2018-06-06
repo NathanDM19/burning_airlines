@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+ .nav{
+   // width: 100%;
+  margin-left: 44%;
+ }
+.nav-link, h1{
+  // margin: 0 auto;
+  text-align: center;
+}
+
+#titleContainer {
+  padding-bottom: 10px;
+}
+
+.col {
+  border-bottom: 1px solid grey;
+  margin-bottom: 10px;
+}
+
+.form-control {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.form-group {
+  text-align: center;
+}
+
+.selectTag {
+  width: 200px;
+}

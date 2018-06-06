@@ -1,6 +1,7 @@
 class FlightsController < ApplicationController
   def new
     @airplanes = Airplane.all
+    @flight = Flight.new
     # raise "hell"
   end
 

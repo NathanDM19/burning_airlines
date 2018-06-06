@@ -1,11 +1,44 @@
 <h1>Virgin Airlines</h1>
-<button><%= link_to "Create Plane", new_airplane_path %></button>
+<!-- <button><%= link_to "Create Plane", new_airplane_path %></button> -->
 <br>
-<hr>
-<% @airplanes.each do |airplane| %>
-<p>Name: <%=link_to airplane.name, airplane_path(airplane) %></p>
-<p>Rows: <%=airplane.rows %></p>
-<p>Columns: <%=airplane.columns %></p>
-<%=link_to "Edit this airplane", edit_airplane_path(airplane.id) %>
-<hr>
-<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col" id="titleContainer">
+      Name
+    </div>
+    <div class="col">
+      Rows
+    </div>
+    <div class="col">
+      Columns
+    </div>
+    <div class="col">
+      <%= link_to "Create Plane", new_airplane_path %>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <% @airplanes.each do |airplane| %>
+  <div class="row">
+    <div class="col">
+      <p><%=link_to airplane.name, airplane_path(airplane) %></p>
+    </div>
+    <div class="col">
+      <p> <%=airplane.rows %></p>
+    </div>
+    <div class="col">
+      <p> <%=airplane.columns %></p>
+    </div>
+    <div class="col">
+      <%=link_to "Edit this airplane", edit_airplane_path(airplane.id) %>
+    </div>
+    <div class="col">
+      <%= link_to "Delete this airplane", airplane_path(airplane), method: :delete %>
+    </div>
+  </div>
+  <% end %>
+</div>
