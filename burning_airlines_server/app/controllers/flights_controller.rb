@@ -23,6 +23,7 @@ class FlightsController < ApplicationController
     @columns = (1..@flight.airplane.columns).to_a
     @rows = (1..@flight.airplane.rows).to_a
     @list = [" ", "A", "B", "C", "D", "E", "F", "G", "H", "I"]
+    
     # puts @columns
     # puts @rows
     # raise 'hell'
