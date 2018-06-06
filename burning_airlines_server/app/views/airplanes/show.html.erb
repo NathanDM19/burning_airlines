@@ -3,16 +3,35 @@
 <p>Row(s): <%= @airplane.rows %></p>
 <p>Column(s): <%= @airplane.columns %></p>
 <br>
-<div class="grid-container">
-  <div class="grid-item">1</div>
-  <div class="grid-item">2</div>
-  <div class="grid-item">3</div>
-  <div class="grid-item">4</div>
-  <div class="grid-item">5</div>
-  <div class="grid-item">6</div>
-  <div class="grid-item">7</div>
-  <div class="grid-item">8</div>
-  <div class="grid-item">9</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+    <% @rows.map do |row| %>
+    <div class="col">
+      <%= @list[row]%>
+    </div>
+    <% end %>
+  </div>
+  <% @columns.map do |row| %>
+    <div class="row">
+      <div class="col">
+        <% row%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" id="colNumber">
+        <%= row %>
+      </div>
+        <% @rows.map do |column| %>
+          <div class="col flightBorder">
+
+              <% column %>
+
+        </div>
+        <% end %>
+      </div>
+  <% end %>
 </div>
 <hr>
 <%= link_to "Back to index page", airplanes_path %>

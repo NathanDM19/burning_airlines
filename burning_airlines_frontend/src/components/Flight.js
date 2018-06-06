@@ -32,7 +32,7 @@ class Flight extends Component {
               this.setState({flight: response.data[i]})
             }
           }
-          
+
           let tempRow = [];
           let tempCol = [];
           let tempReservations = [];
@@ -76,29 +76,28 @@ class Flight extends Component {
     return (
       <div>
         <h1>Flight {this.state.flight.id}</h1>
-          <p>Date: {this.state.flight.date[11] + this.state.flight.date[12] + ":" + this.state.flight.date[14] + this.state.flight.date[15] + " " + "AEST"}<br />{this.state.flight.date[8] + this.state.flight.date[9] + "/" + this.state.flight.date[5] + this.state.flight.date[6] + "/" + this.state.flight.date[0] + this.state.flight.date[1] + this.state.flight.date[2] + this.state.flight.date[3]}</p>
         <Container className="seatsContainer">
           <Row className="seatRow">
             <Col sm="1">
-            </Col>  
-            {this.state.rows.map(row => 
+            </Col>
+            {this.state.rows.map(row =>
               <Col sm="1" className="lettersRow">
               {this.state.letters[row]}
-              </Col>  
+              </Col>
             )}
             </Row>
-          {this.state.columns.map(column => 
-          <Row className="seatRow">  
+          {this.state.columns.map(column =>
+          <Row className="seatRow">
             <Col className="seatNumbers" sm="1">
               {column}
-            </Col> 
+            </Col>
               {this.state.rows.map(row =>
                 this.state.seats[row - 1][column - 1] ? <Col className="seatTaken" sm="1">{this.state.seats[row - 1][column - 1]}</Col> : <Col className="seatFree" sm="1"><Button onClick={() => this.bookSeat(row, column)}>Free</Button></Col>
             )}
-            </Row>  
-          )}    
-          </Container>  
-      </div>  
+            </Row>
+          )}
+          </Container>
+      </div>
     )
   }
 }
