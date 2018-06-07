@@ -17,7 +17,7 @@ class Flight extends Component {
       seats: [[]],
       bookRow: 0,
       bookColumn: 0,
-      user_id: 30
+      user_id: 10
     }
   }
 
@@ -61,10 +61,11 @@ class Flight extends Component {
   }
 
   bookSeat(row, column) {
+    console.log("ROW================:", row, column);
     if (this.state.rows[this.state.rows.length - 1] / 2 > row) {
       axios.post(SERVER_URL, { row: row, column: column, user_id: this.state.user_id, flight_id: this.state.flight.id })
     } else {
-      axios.post(SERVER_URL, { row: row-1, column: column, user_id: this.state.user_id, flight_id: this.state.flight.id })      
+      axios.post(SERVER_URL, { row: row-1, column: column, user_id: this.state.user_id, flight_id: this.state.flight.id })
     }
   }
 
@@ -73,7 +74,7 @@ class Flight extends Component {
       <div>
         <h1>Flight {this.state.flight.id}</h1>
         {this.state.flight.date ?
-        <div>  
+        <div>
           <p className="flightDate">
               {this.state.flight.date[11] + this.state.flight.date[12] + ":" + this.state.flight.date[14] + this.state.flight.date[15] + " " + "AEST"}</p><p className="inLine">Departing From: {this.state.flight.from_airport}</p><br /><p className="flightDate">{this.state.flight.date[8] + this.state.flight.date[9] + "/" + this.state.flight.date[5] + this.state.flight.date[6] + "/" + this.state.flight.date[0] + this.state.flight.date[1] + this.state.flight.date[2] + this.state.flight.date[3]}
               <p className="inLine">Landing At: {this.state.flight.to_airport}</p>
@@ -82,19 +83,19 @@ class Flight extends Component {
         <Container >
           <Row className="seatRow">
             <Col sm="">
-            </Col>  
-            {this.state.rows.map(row => 
+            </Col>
+            {this.state.rows.map(row =>
               Math.floor(this.state.rows[this.state.rows.length - 1] / 2) === row - 1 ?
                 <Col sm="">
                 </Col>
                 :
                 <Col sm="" className="lettersRow">
                   {this.state.letters[row]}
-                </Col>  
+                </Col>
             )}
             </Row>
-          {this.state.columns.map(column => 
-          <Row className="seatRow">  
+          {this.state.columns.map(column =>
+          <Row className="seatRow">
             <Col className="seatNumbers" sm="">
               {column}
             </Col>
@@ -113,7 +114,7 @@ class Flight extends Component {
                         <Button onClick={() => this.bookSeat(row, column)}>
                           Free
                         </Button>
-                      </Col> 
+                      </Col>
                     :
                     this.state.seats[row - 2][column - 1] ?
                       <Col className="seatTaken" sm="">
@@ -126,12 +127,12 @@ class Flight extends Component {
                         </Button>
                       </Col>
               )}
-            </Row>  
-          )}    
-          </Container>  
+            </Row>
+          )}
+          </Container>
         </div>
         <Link to="/" className="backButton"><Button style={{ backgroundColor: "blue", marginLeft: "44.7%", marginTop: "2%" }}>Back to all flights</Button></Link>
-      </div>  
+      </div>
     )
   }
 }
