@@ -14,6 +14,9 @@ class AirplanesController < ApplicationController
 
   def show
     @airplane = Airplane.find params[:id]
+    @columns = (1..@airplane.columns).to_a
+    @rows = (1..@airplane.rows).to_a
+    @list = [" ", "A", "B", "C", "D", "E", "F", "G", "H", "I"]
   end
 
   def edit

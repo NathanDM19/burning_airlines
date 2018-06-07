@@ -36,22 +36,22 @@
         <%date = flight.date.in_time_zone("Sydney") %>
         <p><%= date.strftime("%H:%M %Z %d/%m/%Y") %></p>
       </div>
-      <div class="col">
+      <div class="col flightIndex">
         <p><%=link_to flight.id, flight_path(flight.id)%></p>
       </div>
-      <div class="col">
+      <div class="col flightIndex">
         <p><%=flight.from_airport %></p>
       </div>
-      <div class="col">
+      <div class="col flightIndex">
         <p><%=flight.to_airport %></p>
       </div>
-      <div class="col">
+      <div class="col flightIndex">
         <p><%=flight.airplane.name %></p>
       </div>
-      <div class="col">
+      <div class="col flightIndex">
         <p><%=flight.airplane.rows * flight.airplane.columns %></p>
       </div>
-      <div class="col">
+      <div class="col flightIndex">
         <p><%=link_to "Edit this flight", edit_flight_path(flight.id) %></p>
       </div>
   </div>
