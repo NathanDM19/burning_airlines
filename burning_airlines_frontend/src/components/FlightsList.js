@@ -36,14 +36,14 @@ class FlightsList extends Component {
           {results.length ?
             <Row>
               <Col>Date</Col>
-              <Col>Flight</Col>
+              <Col>Flight #</Col>
               <Col>Departure</Col>
               <Col>Destination</Col>
               <Col>Airplane</Col>
               <Col>Seats Left</Col>
-              <Col><Link to="/"><Button style={{ backgroundColor: "blue" }}>All Flights</Button></Link></Col>
+              <Col><Link to="/"><Button style={{ backgroundColor: "blue", position: "relative", top: "-5px" }}>All Flights</Button></Link></Col>
             </Row> : ""}
-          {results.map((results, i) => (<FlightDetails key={results+i} list={results} />))}
+          {results.map((results, i) => (<FlightDetails key={results+i} list={results} num={i} />))}
         </Container>
       </div>
 
