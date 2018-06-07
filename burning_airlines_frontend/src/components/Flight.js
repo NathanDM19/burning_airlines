@@ -5,6 +5,7 @@ import { Container, Row, Col, Button } from 'reactstrap'
 
 const SERVER_URL = "http://localhost:3000/flights/json"
 
+// Add json page for Users and then add new request. check user.name against document.cookie
 
 class Flight extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class Flight extends Component {
       seats: [[]],
       bookRow: 0,
       bookColumn: 0,
-      user_id: 37
+      user_id: 41
     }
   }
 
@@ -79,7 +80,9 @@ class Flight extends Component {
               {this.state.flight.date[11] + this.state.flight.date[12] + ":" + this.state.flight.date[14] + this.state.flight.date[15] + " " + "AEST"}</p><p className="inLine">Departing From: {this.state.flight.from_airport}</p><br /><p className="flightDate">{this.state.flight.date[8] + this.state.flight.date[9] + "/" + this.state.flight.date[5] + this.state.flight.date[6] + "/" + this.state.flight.date[0] + this.state.flight.date[1] + this.state.flight.date[2] + this.state.flight.date[3]}
               </p><p className="inLine">Landing At: {this.state.flight.to_airport}</p>
           </div> : ""}
-        <div className="seatsContainer" style={{width: `${this.state.rows[this.state.rows.length-1]*110}px` }}>
+        <div className="seatsContainer" style={{ width: `${this.state.rows[this.state.rows.length - 1] * 110}px` }}>
+          <div className="flightBackgroud">
+          </div>  
         <Container >
           <Row className="seatRow">
             <Col sm="">
@@ -111,7 +114,7 @@ class Flight extends Component {
                       </Col>
                       :
                         <Col className="seatFree" sm="">
-                        <Button onClick={() => this.bookSeat(row, column)}>
+                          <Button color="success" onClick={() => this.bookSeat(row, column)}>
                           Free
                         </Button>
                       </Col>
@@ -122,7 +125,7 @@ class Flight extends Component {
                       </Col>
                       :
                       <Col className="seatFree" sm="">
-                        <Button onClick={() => this.bookSeat(row, column)}>
+                          <Button color="success" onClick={() => this.bookSeat(row, column)}>
                           Free
                         </Button>
                       </Col>

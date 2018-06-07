@@ -5,22 +5,17 @@ import { Link } from 'react-router-dom'
 import Home from './components/Home'
 import Flight from './components/Flight'
 import Search from './components/Search'
-
-const Error404 = prop => {
-  return <div>NO MATCHING ROUTE! <br/>
-    <Link to="/">Home</Link>
-  </div>
-}
+import Navbar from './components/Navbar'
+import Account from './components/Account'
 
 const Routes = (
   <Router>
     <div>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/flights/:id" component={Flight} />
-        <Route path="/search" component={Search} />
-        <Route component={Error404} />
-      </Switch>
+      <Route component={Navbar} />
+      <Route exact path="/" component={Home} />
+      <Route path="/flights/:id" component={Flight} />
+      <Route exact path="/search" component={Search} />
+      <Route exact path="/account" component={Account} />
     </div>
   </Router>
 )

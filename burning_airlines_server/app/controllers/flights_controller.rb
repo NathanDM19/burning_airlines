@@ -64,6 +64,9 @@ class FlightsController < ApplicationController
 
     reservation = Reservation.create row: params['row'], column: params['column'], user_id: params['user_id'], flight_id: params['flight_id']
   end
+  def reservations 
+    render json: Reservation.all, include: [:user, {flight: {include: [:airplane]}}]
+  end
   private
   def flight_params
     params.require(:flight).permit(:date, :from_airport, :to_airport, :airplane_id)

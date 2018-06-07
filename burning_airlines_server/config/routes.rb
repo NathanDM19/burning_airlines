@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/flights/json" => "flights#json"
 
   post "/flights/json" => "flights#post"
+  get "/flights/jsonReservations" => "flights#reservations"
   resources :airplanes
   delete "/airplanes/:id" => "airplanes#destroy"
   resources :flights
