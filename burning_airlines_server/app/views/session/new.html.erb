@@ -1,13 +1,8 @@
-<h2 id="signIn">Please sign in</h2>
+<h2 class="signIn">Please sign in</h2>
 
-<% if flash[:errors] %>
-  <strong>Please correct the following errors:</strong>
-  <ol>
-    <% flash[:errors].each do |e| %>
-    <li><%= e %></li>
-    <% end %>
-  </ol>
-<% end %>
+
+<div class="signIn"><strong><%= flash[:errors] %></strong></div>
+
 <br>
 <div class="form-group" id="signIn">
 <%= form_tag login_path do%>

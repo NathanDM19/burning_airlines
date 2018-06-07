@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def check_if_logged_in
     unless @user.present?
-      flash[:errors] = @user.errors.full_messages
+      flash[:errors] = "Please log in first."
       redirect_to login_path
     end
   end
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def check_if_admin
     unless @user.isAdmin
-      flash[:error] = @user.errors.full_messages
+      flash[:error] = "Please log in first."
       redirect_to login_path
     end
   end
