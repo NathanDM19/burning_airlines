@@ -1,7 +1,15 @@
-<h1>Virgin Airlies</h1>
-<!-- <button><%= link_to "Create flight", new_flight_path %></button> -->
-<br>
+<nav class="nav">
+  <%= link_to "Airplanes", airplanes_path, class: "nav-link"%>
+  <%= link_to "Flights", flights_path, class: "nav-link"%>
+</nav>
 
+<h1>Virgin Airlines</h1>
+<!-- <button><%= link_to "Create flight", new_flight_path %></button> -->
+<div>
+  <div>Welcome, <%= @user.name %>!</div>
+  <div><%= link_to "Log out", login_path, method: :delete, class: "btn btn-danger"%></div>
+</div>
+<br>
 
 <div class="container">
   <div class="row test">
@@ -23,9 +31,11 @@
     <div class="col">
       Seats
     </div>
-    <div class="col">
-      <%= link_to "Create flight", new_flight_path %>
-    </div>
+    <% if @user.present? && @user.isAdmin?%>
+      <div class="col">
+          <button type="button" class="btn btn-success tooLow"><%=link_to "Create Flight", new_flight_path, class:"button" %></button>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -51,9 +61,11 @@
       <div class="col flightIndex">
         <p><%=flight.airplane.rows * flight.airplane.columns %></p>
       </div>
-      <div class="col flightIndex">
-        <p><%=link_to "Edit this flight", edit_flight_path(flight.id) %></p>
-      </div>
+      <% if @user.present? && @user.isAdmin?%>
+        <div class="col flightIndex">
+          <button type="button" class="btn btn-info tooHigh"><%=link_to "Edit Flight", edit_flight_path(flight.id), class:"button" %></button>
+        </div>
+      <% end %>
   </div>
   <!-- <div class="row">
     <%=link_to "Edit this flight", edit_flight_path(flight.id) %>

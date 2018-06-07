@@ -1,4 +1,8 @@
 class AirplanesController < ApplicationController
+
+  before_action :check_if_logged_in, only: [:index, :show, :new]
+  before_action :check_if_admin, except: [:index, :show]
+  
   def new
     @airplane = Airplane.new
   end

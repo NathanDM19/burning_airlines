@@ -12,8 +12,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      flights: [],
-      dateArray: []
+      flights: []
     }
   }
 
@@ -34,15 +33,10 @@ class Home extends Component {
             allFlights.push(tempFlight)
           }
           this.setState({ flights: allFlights })
-          let dateArray = [];
-          for (let i = 0; i < this.state.flights.length; i++) {
-            dateArray.push(this.state.flights[i].date)
-          }
-          this.setState({dateArray: dateArray.sort()})
         });
     };
     fetchFlights();
-    setInterval(fetchFlights, 1000)
+    // setInterval(fetchFlights, 1000)
   }
 
   render() {
@@ -76,9 +70,7 @@ class Home extends Component {
         </Container>
         <Container>
         {
-          this.state.dateArray.map(date =>
             this.state.flights.length && this.state.flights.map(flight =>
-                date === flight.date? 
               
               <Row key={flight.id}>
                 <Col className="flightsDate">
@@ -102,8 +94,8 @@ class Home extends Component {
                 <Col className="flightsButton">
                   <Button><Link to={`flights/${flight.id}`} className="bookButton">Book a seat</Link></Button>  
                 </Col>  
-            </Row> : ""
-          ))}
+            </Row>
+          )}
          </Container> 
       </div>
     )

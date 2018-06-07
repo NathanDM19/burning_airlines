@@ -1,5 +1,9 @@
 class FlightsController < ApplicationController
   skip_before_action :verify_authenticity_token
+
+  before_action :check_if_logged_in, only: [:index, :show, :new]
+  before_action :check_if_admin, except: [:index, :show]
+
   def new
     @airplanes = Airplane.all
     @flight = Flight.new
@@ -17,6 +21,7 @@ class FlightsController < ApplicationController
 
   def index
     @flights = Flight.all
+    # @user = User.find params[:id]
   end
 
   def post
@@ -53,9 +58,10 @@ class FlightsController < ApplicationController
   end
 
   def json
-    render json: Flight.all, include: [:airplane , {reservations: {include: [:user]} } ]
+    render json: Flight.all.order(:date), include: [:airplane , {reservations: {include: [:user]} } ]
   end
   def post
+
     reservation = Reservation.create row: params['row'], column: params['column'], user_id: params['user_id'], flight_id: params['flight_id']
   end
   private

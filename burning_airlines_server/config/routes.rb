@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  root to: "session#new"
+  get "/login" => "session#new"
+  post "/login" => 'session#create'
+  delete "/login" => "session#destroy"
+
+  resources :users
+
   get "/flights/json" => "flights#json"
-  get "airplanes/json" => "airplanes#json"
+
   post "/flights/json" => "flights#post"
   resources :airplanes
   delete "/airplanes/:id" => "airplanes#destroy"

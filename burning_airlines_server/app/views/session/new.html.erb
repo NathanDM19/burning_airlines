@@ -1,0 +1,22 @@
+<h2 id="signIn">Please sign in</h2>
+
+<% if flash[:errors] %>
+  <strong>Please correct the following errors:</strong>
+  <ol>
+    <% flash[:errors].each do |e| %>
+    <li><%= e %></li>
+    <% end %>
+  </ol>
+<% end %>
+<br>
+<div class="form-group" id="signIn">
+<%= form_tag login_path do%>
+  <%= label_tag :name%>
+  <%= text_field_tag :name, nil, class: "form-control", placeholder:"Enter name"%>
+  <br>
+  <%= label_tag :password %>
+  <%= password_field_tag :password, nil, class: "form-control", placeholder:"Password"%>
+  <br>
+  <%= submit_tag "Login" , class:"btn btn-primary"%>
+<% end %>
+</div>

@@ -33,6 +33,7 @@ class SearchForm extends Component {
   }
 
   render() {
+    const airports = ["Sydney Airport", "Melbourne Airport", "Brisbane Airport", "Gold Coast Airport", "Adelaide Airport", "Hobart International Airport", "Perth Airport"]
     return (
       <div>
         <form onSubmit={this.submitSearch}>
@@ -40,15 +41,11 @@ class SearchForm extends Component {
           <br />
           <select onChange={this.originHandler}>
             <option>Select departure</option>
-            <option>Sydney</option>
-            <option>Melbourne</option>
-            <option>Toronto</option>
+            {airports.map(airport => <option key={airport}>{airport}</option>)}
           </select>
           <select onChange={this.destinationHandler}>
             <option>Select destination</option>
-            <option>Melbourne</option>
-            <option>Hobart</option>
-            <option>Singapore</option>
+            {airports.map(airport => <option key={airport + "to"}>{airport}</option>)}
           </select>
           <input type="submit" value="Submit" />
         </form>

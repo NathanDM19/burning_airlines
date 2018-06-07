@@ -17,7 +17,7 @@ class Flight extends Component {
       seats: [[]],
       bookRow: 0,
       bookColumn: 0,
-      user_id: 10
+      user_id: 37
     }
   }
 
@@ -77,8 +77,8 @@ class Flight extends Component {
         <div>
           <p className="flightDate">
               {this.state.flight.date[11] + this.state.flight.date[12] + ":" + this.state.flight.date[14] + this.state.flight.date[15] + " " + "AEST"}</p><p className="inLine">Departing From: {this.state.flight.from_airport}</p><br /><p className="flightDate">{this.state.flight.date[8] + this.state.flight.date[9] + "/" + this.state.flight.date[5] + this.state.flight.date[6] + "/" + this.state.flight.date[0] + this.state.flight.date[1] + this.state.flight.date[2] + this.state.flight.date[3]}
-              <p className="inLine">Landing At: {this.state.flight.to_airport}</p>
-          </p></div> : ""}
+              </p><p className="inLine">Landing At: {this.state.flight.to_airport}</p>
+          </div> : ""}
         <div className="seatsContainer" style={{width: `${this.state.rows[this.state.rows.length-1]*110}px` }}>
         <Container >
           <Row className="seatRow">
