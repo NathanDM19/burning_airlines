@@ -14,7 +14,7 @@
       Columns
     </div>
     <div class="col">
-      <%= link_to "Create Plane", new_airplane_path %>
+      <button type="button" class="btn btn-success tooLow"><%= link_to "Create Plane", new_airplane_path, class:"button" %></button>
     </div>
     <div class="col">
     </div>
@@ -34,10 +34,10 @@
       <p> <%=airplane.columns %></p>
     </div>
     <div class="col">
-      <%=link_to "Edit this airplane", edit_airplane_path(airplane.id) %>
+              <button type="button" class="btn btn-info tooLow"><%=link_to "Edit Flight", edit_airplane_path(airplane.id), class:"button" %></button>
     </div>
     <div class="col">
-      <%= link_to "Delete this airplane", airplane_path(airplane), method: :delete %>
+      <button type="button" class="btn btn-danger tooLow"><%= link_to "Delete Airplane", airplane_path(airplane), class:"button", method: :delete %></button>
     </div>
   </div>
   <% end %>

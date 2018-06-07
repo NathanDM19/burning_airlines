@@ -53,9 +53,10 @@ class FlightsController < ApplicationController
   end
 
   def json
-    render json: Flight.all, include: [:airplane , {reservations: {include: [:user]} } ]
+    render json: Flight.all.order(:date), include: [:airplane , {reservations: {include: [:user]} } ]
   end
   def post
+
     reservation = Reservation.create row: params['row'], column: params['column'], user_id: params['user_id'], flight_id: params['flight_id']
   end
   private
