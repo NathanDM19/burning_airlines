@@ -61,8 +61,7 @@ class Flight extends Component {
   }
 
   bookSeat(row, column) {
-    console.log(row, column, this.state.user_id, this.state.flight.id)
-    if (this.state.rows[this.state.rows - 1] / 2 > row) {
+    if (this.state.rows[this.state.rows.length - 1] / 2 > row) {
       axios.post(SERVER_URL, { row: row, column: column, user_id: this.state.user_id, flight_id: this.state.flight.id })
     } else {
       axios.post(SERVER_URL, { row: row-1, column: column, user_id: this.state.user_id, flight_id: this.state.flight.id })      
@@ -82,7 +81,6 @@ class Flight extends Component {
         <div className="seatsContainer" style={{width: `${this.state.rows[this.state.rows.length-1]*110}px` }}>
         <Container >
           <Row className="seatRow">
-<<<<<<< HEAD
             <Col sm="">
             </Col>  
             {this.state.rows.map(row => 
@@ -98,23 +96,9 @@ class Flight extends Component {
           {this.state.columns.map(column => 
           <Row className="seatRow">  
             <Col className="seatNumbers" sm="">
-=======
-            <Col sm="1">
-            </Col>
-            {this.state.rows.map(row =>
-              <Col sm="1" className="lettersRow">
-              {this.state.letters[row]}
-              </Col>
-            )}
-            </Row>
-          {this.state.columns.map(column =>
-          <Row className="seatRow">
-            <Col className="seatNumbers" sm="1">
->>>>>>> 9beae7e5344e4dacfac19fd58dfb01a4620b727b
               {column}
             </Col>
               {this.state.rows.map(row =>
-<<<<<<< HEAD
                 Math.floor(this.state.rows[this.state.rows.length - 1] / 2) === row - 1 ?
                   <Col sm="">
                   </Col>
@@ -148,14 +132,6 @@ class Flight extends Component {
         </div>
         <Link to="/" className="backButton"><Button style={{ backgroundColor: "blue", marginLeft: "44.7%", marginTop: "2%" }}>Back to all flights</Button></Link>
       </div>  
-=======
-                this.state.seats[row - 1][column - 1] ? <Col className="seatTaken" sm="1">{this.state.seats[row - 1][column - 1]}</Col> : <Col className="seatFree" sm="1"><Button onClick={() => this.bookSeat(row, column)}>Free</Button></Col>
-            )}
-            </Row>
-          )}
-          </Container>
-      </div>
->>>>>>> 9beae7e5344e4dacfac19fd58dfb01a4620b727b
     )
   }
 }
