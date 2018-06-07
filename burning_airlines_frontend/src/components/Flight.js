@@ -19,8 +19,6 @@ class Flight extends Component {
       bookColumn: 0,
       user_id: 30
     }
-    // console.log(this.props.match.params.id)
-    // console.log(this.props.match.params.id)
   }
 
   componentDidMount() {
@@ -50,53 +48,90 @@ class Flight extends Component {
                 }
               }
             }
+            tempRow.push(tempRow.length+1)
           }
-          // console.log(seats)
           for (let i = 0; i < this.state.flight.airplane.columns; i++) {
             tempCol[i] = i + 1;
           }
-          // console.log(seats)
-          // for (let i = 0; i < this.state.flight.reservations.length; i++) {
-          //   console.log("ran")
-          //   tempReservations.push([this.state.flight.reservations[i].row, this.state.flight.reservations[i].column])
-          // }
-          this.setState({ rows: tempRow, columns: tempCol, seats: tempSeats })
-              });
-          };
-          fetchFlights();
-          setInterval(fetchFlights, 1000)
+            this.setState({ rows: tempRow, columns: tempCol, seats: tempSeats })
+          });
+        };
+        fetchFlights();
+    setInterval(fetchFlights, 1000)
   }
 
   bookSeat(row, column) {
     console.log(row, column, this.state.user_id, this.state.flight.id)
-      axios.post(SERVER_URL, { row: row, column: column, user_id: this.state.user_id, flight_id: this.state.flight.id})
+    if (this.state.rows[this.state.rows - 1] / 2 > row) {
+      axios.post(SERVER_URL, { row: row, column: column, user_id: this.state.user_id, flight_id: this.state.flight.id })
+    } else {
+      axios.post(SERVER_URL, { row: row-1, column: column, user_id: this.state.user_id, flight_id: this.state.flight.id })      
+    }
   }
 
   render() {
     return (
       <div>
         <h1>Flight {this.state.flight.id}</h1>
-        <Container className="seatsContainer">
+        {this.state.flight.date ?
+        <div>  
+          <p className="flightDate">
+              {this.state.flight.date[11] + this.state.flight.date[12] + ":" + this.state.flight.date[14] + this.state.flight.date[15] + " " + "AEST"}</p><p className="inLine">Departing From: {this.state.flight.from_airport}</p><br /><p className="flightDate">{this.state.flight.date[8] + this.state.flight.date[9] + "/" + this.state.flight.date[5] + this.state.flight.date[6] + "/" + this.state.flight.date[0] + this.state.flight.date[1] + this.state.flight.date[2] + this.state.flight.date[3]}
+              <p className="inLine">Landing At: {this.state.flight.to_airport}</p>
+          </p></div> : ""}
+        <div className="seatsContainer" style={{width: `${this.state.rows[this.state.rows.length-1]*110}px` }}>
+        <Container >
           <Row className="seatRow">
-            <Col sm="1">
+            <Col sm="">
             </Col>  
             {this.state.rows.map(row => 
-              <Col sm="1" className="lettersRow">
-              {this.state.letters[row]}
-              </Col>  
+              Math.floor(this.state.rows[this.state.rows.length - 1] / 2) === row - 1 ?
+                <Col sm="">
+                </Col>
+                :
+                <Col sm="" className="lettersRow">
+                  {this.state.letters[row]}
+                </Col>  
             )}
             </Row>
           {this.state.columns.map(column => 
           <Row className="seatRow">  
-            <Col className="seatNumbers" sm="1">
+            <Col className="seatNumbers" sm="">
               {column}
             </Col> 
               {this.state.rows.map(row =>
-                this.state.seats[row - 1][column - 1] ? <Col className="seatTaken" sm="1">{this.state.seats[row - 1][column - 1]}</Col> : <Col className="seatFree" sm="1"><Button onClick={() => this.bookSeat(row, column)}>Free</Button></Col>
-            )}
+                Math.floor(this.state.rows[this.state.rows.length - 1] / 2) === row - 1 ?
+                  <Col sm="">
+                  </Col>
+                  :
+                  Math.floor(this.state.rows[this.state.rows.length - 1] / 2) > row - 1 ?
+                    this.state.seats[row - 1][column - 1] ?
+                      <Col className="seatTaken" sm="">
+                        {this.state.seats[row - 1][column - 1]}
+                      </Col>
+                      :
+                        <Col className="seatFree" sm="">
+                        <Button onClick={() => this.bookSeat(row, column)}>
+                          Free
+                        </Button>
+                      </Col> 
+                    :
+                    this.state.seats[row - 2][column - 1] ?
+                      <Col className="seatTaken" sm="">
+                        {this.state.seats[row - 2][column - 1]}
+                      </Col>
+                      :
+                      <Col className="seatFree" sm="">
+                        <Button onClick={() => this.bookSeat(row, column)}>
+                          Free
+                        </Button>
+                      </Col>
+              )}
             </Row>  
           )}    
           </Container>  
+        </div>
+        <Link to="/" className="backButton"><Button style={{ backgroundColor: "blue", marginLeft: "44.7%", marginTop: "2%" }}>Back to all flights</Button></Link>
       </div>  
     )
   }

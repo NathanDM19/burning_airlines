@@ -16,7 +16,7 @@ body {
 
 .col {
   border-bottom: 1px solid grey;
-  margin-bottom: 10px;
+  padding: 5px 0;
 }
 
 .form-control {
@@ -39,8 +39,9 @@ body {
   text-decoration: none;
 }
 .seatsContainer {
-  margin-left: 100px;
-  padding-left: 100px;
+  margin: 0 auto;
+  position: relative;
+  left: -50px;
 }
 .seatTaken, .seatFree {
   border: 1px solid black;
@@ -55,7 +56,33 @@ body {
 
 .seatNumbers {
   text-align: right;
+  padding-top: 12px;
 }
 .lettersRow {
   text-align: center;
 }
+.flightsDate {
+  padding-top: -10px;
+}
+.flightsRest {
+  padding-top: 15px;
+}
+.flightsButton {
+  padding-top: 10px;
+}
+.flightDate {
+  margin-left: 580px;
+  display: inline;  
+}
+.inLine {
+  display: inline;
+  margin-left: 50px;
+}
+/* .backButton, .backButton:hover {
+  color: white;
+  text-decoration: none;
+} */
+
+/* .blue {
+  backgroundColor: blue;
+} */
